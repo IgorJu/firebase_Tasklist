@@ -12,7 +12,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="firebase_Tasklist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -52,10 +52,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yj3-1v-FYX">
-                                        <rect key="frame" x="78" y="368" width="84" height="94"/>
+                                        <rect key="frame" x="40" y="368" width="160" height="94"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ma6-AT-JiI">
-                                                <rect key="frame" x="0.0" y="0.0" width="84" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="40.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Login">
                                                     <backgroundConfiguration key="background">
@@ -67,11 +67,10 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Sv-Xw-1aP"/>
-                                                    <segue destination="nlm-iU-SB7" kind="presentation" identifier="tasksSegue" modalPresentationStyle="fullScreen" id="OH5-F4-Oja"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3n9-sd-iUV">
-                                                <rect key="frame" x="0.0" y="60.5" width="84" height="33.5"/>
+                                                <rect key="frame" x="0.0" y="60.5" width="160" height="33.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Register">
                                                     <backgroundConfiguration key="background">
@@ -90,6 +89,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IiA-eD-Ly3" secondAttribute="trailing" id="6YN-pi-KYo"/>
+                                    <constraint firstItem="Yj3-1v-FYX" firstAttribute="leading" secondItem="fVC-0r-Fkv" secondAttribute="leading" constant="40" id="Lsr-e6-whx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yj3-1v-FYX" secondAttribute="trailing" constant="40" id="Qnf-Ra-SlP"/>
+                                    <constraint firstItem="IiA-eD-Ly3" firstAttribute="top" secondItem="sdV-H4-Mng" secondAttribute="bottom" constant="95" id="ZZG-ho-DC6"/>
                                     <constraint firstItem="IiA-eD-Ly3" firstAttribute="leading" secondItem="fVC-0r-Fkv" secondAttribute="leading" id="vE2-Mb-a4o"/>
                                 </constraints>
                             </stackView>
@@ -107,6 +109,7 @@
                         <outlet property="emailTF" destination="dmg-Ng-5zX" id="rOz-kN-HAq"/>
                         <outlet property="passwordTF" destination="3yd-o8-QbY" id="kSq-Db-pb2"/>
                         <outlet property="warningLabel" destination="eNd-8k-nsw" id="UWN-dw-z1U"/>
+                        <segue destination="nlm-iU-SB7" kind="presentation" identifier="taskSegue" modalPresentationStyle="fullScreen" id="oXy-oj-Y2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -123,8 +126,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oTN-Ns-Ksz">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemIndigoColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="NMG-fQ-5zU">
                                         <rect key="frame" x="0.0" y="50" width="320" height="43.5"/>
@@ -132,7 +135,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NMG-fQ-5zU" id="I25-6T-urI">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -151,6 +156,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="Rnc-Dq-ypR">
+                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="lXv-sZ-Sk4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="signOutButtonTapped:" destination="dI3-xf-7Uv" id="yVs-ug-zOd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="R8r-hl-mir">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -187,9 +198,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

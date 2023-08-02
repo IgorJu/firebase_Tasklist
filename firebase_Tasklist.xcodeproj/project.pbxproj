@@ -72,15 +72,23 @@
 			children = (
 				7867F05E2A784CEA00C926EB /* AppDelegate.swift */,
 				7867F0602A784CEA00C926EB /* SceneDelegate.swift */,
-				7867F0622A784CEA00C926EB /* LoginViewController.swift */,
+				78F53A042A7930CB005198B0 /* Controllers */,
 				7867F0642A784CEA00C926EB /* Main.storyboard */,
-				78EE1BAF2A7859AD003B8F40 /* TasksViewController.swift */,
 				7867F0672A784CEC00C926EB /* Assets.xcassets */,
 				7867F0692A784CEC00C926EB /* LaunchScreen.storyboard */,
 				78EE1BAD2A7856F3003B8F40 /* GoogleService-Info.plist */,
 				7867F06C2A784CEC00C926EB /* Info.plist */,
 			);
 			path = firebase_Tasklist;
+			sourceTree = "<group>";
+		};
+		78F53A042A7930CB005198B0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7867F0622A784CEA00C926EB /* LoginViewController.swift */,
+				78EE1BAF2A7859AD003B8F40 /* TasksViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

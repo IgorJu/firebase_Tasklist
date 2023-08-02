@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TasksViewController: UIViewController {
 
@@ -20,7 +21,14 @@ class TasksViewController: UIViewController {
     }
     
     
-    
+    @IBAction func signOutButtonTapped(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+        dismiss(animated: true)
+    }
 }
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
