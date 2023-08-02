@@ -13,6 +13,8 @@
 		7867F0662A784CEA00C926EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867F0642A784CEA00C926EB /* Main.storyboard */; };
 		7867F0682A784CEC00C926EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7867F0672A784CEC00C926EB /* Assets.xcassets */; };
 		7867F06B2A784CEC00C926EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7867F0692A784CEC00C926EB /* LaunchScreen.storyboard */; };
+		78DFB6C02A7A7E4F000DFA05 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DFB6BF2A7A7E4F000DFA05 /* Task.swift */; };
+		78DFB6C22A7A7E57000DFA05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DFB6C12A7A7E57000DFA05 /* User.swift */; };
 		78EE1BA42A7855AF003B8F40 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 78EE1BA32A7855AF003B8F40 /* FirebaseAuth */; };
 		78EE1BA62A7855AF003B8F40 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 78EE1BA52A7855AF003B8F40 /* FirebaseAuthCombine-Community */; };
 		78EE1BA82A7855AF003B8F40 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 78EE1BA72A7855AF003B8F40 /* FirebaseDatabase */; };
@@ -31,6 +33,8 @@
 		7867F0672A784CEC00C926EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7867F06A2A784CEC00C926EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7867F06C2A784CEC00C926EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78DFB6BF2A7A7E4F000DFA05 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		78DFB6C12A7A7E57000DFA05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78EE1BAD2A7856F3003B8F40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		78EE1BAF2A7859AD003B8F40 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,16 +74,34 @@
 		7867F05D2A784CEA00C926EB /* firebase_Tasklist */ = {
 			isa = PBXGroup;
 			children = (
+				78DFB6C32A7A7E63000DFA05 /* Models */,
+				78DFB6C42A7A81A0000DFA05 /* Supporting Files */,
+				78F53A042A7930CB005198B0 /* Controllers */,
+			);
+			path = firebase_Tasklist;
+			sourceTree = "<group>";
+		};
+		78DFB6C32A7A7E63000DFA05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				78DFB6BF2A7A7E4F000DFA05 /* Task.swift */,
+				78DFB6C12A7A7E57000DFA05 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		78DFB6C42A7A81A0000DFA05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				7867F05E2A784CEA00C926EB /* AppDelegate.swift */,
 				7867F0602A784CEA00C926EB /* SceneDelegate.swift */,
-				78F53A042A7930CB005198B0 /* Controllers */,
 				7867F0642A784CEA00C926EB /* Main.storyboard */,
 				7867F0672A784CEC00C926EB /* Assets.xcassets */,
 				7867F0692A784CEC00C926EB /* LaunchScreen.storyboard */,
 				78EE1BAD2A7856F3003B8F40 /* GoogleService-Info.plist */,
 				7867F06C2A784CEC00C926EB /* Info.plist */,
 			);
-			path = firebase_Tasklist;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		78F53A042A7930CB005198B0 /* Controllers */ = {
@@ -175,6 +197,8 @@
 			files = (
 				7867F0632A784CEA00C926EB /* LoginViewController.swift in Sources */,
 				78EE1BB02A7859AD003B8F40 /* TasksViewController.swift in Sources */,
+				78DFB6C22A7A7E57000DFA05 /* User.swift in Sources */,
+				78DFB6C02A7A7E4F000DFA05 /* Task.swift in Sources */,
 				7867F05F2A784CEA00C926EB /* AppDelegate.swift in Sources */,
 				7867F0612A784CEA00C926EB /* SceneDelegate.swift in Sources */,
 			);
@@ -325,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25H4N2RW85;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = firebase_Tasklist/Info.plist;
+				INFOPLIST_FILE = "firebase_Tasklist/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -356,7 +380,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25H4N2RW85;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = firebase_Tasklist/Info.plist;
+				INFOPLIST_FILE = "firebase_Tasklist/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
