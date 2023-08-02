@@ -7,14 +7,23 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class TasksViewController: UIViewController {
 
+    var user: UserS!
+    var ref: DatabaseReference!
+    //var tasks = Array<Task>()
+    var tasks: [Task] = []
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserS(user: currentUser)
+        ref = Database.database().reference(withPath: "users").child(user.uid).child("tasks")
+        
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
@@ -24,9 +33,13 @@ class TasksViewController: UIViewController {
             preferredStyle: .alert
         )
         alertController.addTextField()
-        let save = UIAlertAction(title: "Save", style: .default) { _ in
+        let save = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
             guard let textField = alertController.textFields?.first, textField.text != "" else { return }
+            let task = Task(title: textField.text!, userId: (self?.user.uid)!)
+            let taskRef = self?.ref.child(task.title.lowercased())
+            taskRef?.setValue(["title": task.title, "userId": task.userId, "completed": task.completed])
         }
+        
         
         let cancel = UIAlertAction(title: "Cancel", style: .default)
         alertController.addAction(save)

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
 
@@ -15,9 +16,11 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTF: UITextField!
     
     private let segueID = "taskSegue"
+    private var ref: DatabaseReference! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference(withPath: "users")
         warningLabel.alpha = 0
         Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             if user != nil {
@@ -62,16 +65,14 @@ class LoginViewController: UIViewController {
             displayWarning(withText: "Incorrect data")
             return
         }
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error == nil {
-                if user != nil {
-                } else {
-                    print("user is not created")
-                }
-            } else {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+            guard error == nil, user != nil else {
                 print(error?.localizedDescription as Any)
+                return
             }
             
+            let userRef = self?.ref.child((user?.user.uid)!)
+            userRef?.setValue(["email": user?.user.email])
         }
         
     }
