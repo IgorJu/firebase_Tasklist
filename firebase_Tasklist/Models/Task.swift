@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseDatabase
 
-struct Task {
+struct Task: Equatable {
     let title: String
     let userId: String
     let ref: DatabaseReference?

@@ -74,9 +74,9 @@
 		7867F05D2A784CEA00C926EB /* firebase_Tasklist */ = {
 			isa = PBXGroup;
 			children = (
+				78F53A042A7930CB005198B0 /* Controllers */,
 				78DFB6C32A7A7E63000DFA05 /* Models */,
 				78DFB6C42A7A81A0000DFA05 /* Supporting Files */,
-				78F53A042A7930CB005198B0 /* Controllers */,
 			);
 			path = firebase_Tasklist;
 			sourceTree = "<group>";

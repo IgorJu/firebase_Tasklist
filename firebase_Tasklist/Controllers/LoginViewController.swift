@@ -10,14 +10,17 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class LoginViewController: UIViewController {
-
+    
+    //MARK: - Outlets
     @IBOutlet var warningLabel: UILabel!
     @IBOutlet var emailTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    //MARK: - Properties
     private let segueID = "taskSegue"
     private var ref: DatabaseReference! = nil
     
+    //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference(withPath: "users")
@@ -35,11 +38,9 @@ class LoginViewController: UIViewController {
         passwordTF.text = ""
     }
     
-    
-    
+    //MARK: - IBActions
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        guard let email = emailTF.text, let password = passwordTF.text, email != "", password != ""
-        else {
+        guard let email = emailTF.text, let password = passwordTF.text, email != "", password != "" else {
             displayWarning(withText: "Incorrect data")
             return
         }
@@ -47,16 +48,13 @@ class LoginViewController: UIViewController {
             if error != nil {
                 self?.displayWarning(withText: "Error occured")
                 return
-        }
+            }
             if user != nil {
                 self?.performSegue(withIdentifier: (self?.segueID)!, sender: nil)
                 return
             }
-            
             self?.displayWarning(withText: "No such user")
-            
         }
-        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -70,13 +68,12 @@ class LoginViewController: UIViewController {
                 print(error?.localizedDescription as Any)
                 return
             }
-            
             let userRef = self?.ref.child((user?.user.uid)!)
             userRef?.setValue(["email": user?.user.email])
         }
-        
     }
     
+    //MARK: - functions
     func displayWarning(withText text: String) {
         warningLabel.text = text
         UIView.animate(
@@ -91,10 +88,6 @@ class LoginViewController: UIViewController {
         ) { [weak self] complete in
             self?.warningLabel.alpha = 0
         }
-        
-            
     }
-    
-    
 }
 

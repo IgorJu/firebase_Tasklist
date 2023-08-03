@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class TasksViewController: UIViewController {
-
+    
     //MARK: - Properties
     @IBOutlet var tableView: UITableView!
     
@@ -24,7 +24,6 @@ class TasksViewController: UIViewController {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserS(user: currentUser)
         ref = Database.database().reference(withPath: "users").child(user.uid).child("tasks")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,24 +36,17 @@ class TasksViewController: UIViewController {
                 _tasks.append(task)
             }
             self?.tasks = _tasks
-            
-            //настройка анимации при добавлении новых ячеек
-            let oldCount = self?.tableView.numberOfRows(inSection: 0) ?? 0
-            if oldCount != _tasks.count {
-                self?.tableView.beginUpdates()
-                let indexPathsToInsert = self?.indexPathsToInsert(from: oldCount, to: _tasks.count)
-                self?.tableView.insertRows(at: indexPathsToInsert ?? [], with: .fade)
-                self?.tableView.endUpdates()
-            }
+            self?.tableView.reloadData()
         }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         ref.removeAllObservers()
     }
     
-    //MARK: - IBAction funcs
+    //MARK: - IBAction functions
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(
             title: "New Task",
@@ -88,16 +80,6 @@ class TasksViewController: UIViewController {
         }
         dismiss(animated: true)
     }
-    
-    //MARK: - Private func
-    //вспомогательная функция для анимации добавления ячеек
-    private func indexPathsToInsert(from oldCount: Int, to newCount: Int) -> [IndexPath] {
-        var indexPaths: [IndexPath] = []
-        for i in oldCount..<newCount {
-            indexPaths.append(IndexPath(row: i, section: 0))
-        }
-        return indexPaths
-    }
 }
 
 //MARK: - Extension UITableViewDelegate, DataSource
@@ -109,15 +91,39 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-
-        let taskTitle = tasks[indexPath.row].title
+        let task = tasks[indexPath.row]
         var content = cell.defaultContentConfiguration()
+        content.text = task.title
         content.textProperties.color = .white
-        content.text = taskTitle
         cell.contentConfiguration = content
+        toggleCompletion(cell, isCompleted: task.completed)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
     
+    //удаление ячеек с анимацией и удаление из бд
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let task = tasks[indexPath.row]
+            task.ref?.removeValue()
+        }
+    }
+        
+    //изменение состояния завершенности задачи по нажатию на ячейку
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        let task = tasks [indexPath.row]
+        let isCompleted = !task.completed
+        toggleCompletion(cell, isCompleted: isCompleted)
+        task.ref?.updateChildValues(["completed": isCompleted])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func toggleCompletion(_ cell: UITableViewCell, isCompleted: Bool) {
+        cell.accessoryType = isCompleted ? .checkmark : .none
+    }
 }
