@@ -33,17 +33,17 @@
 
 
 
-<img width="300" alt="Снимок экрана 2023-08-03 в 16 30 42" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/f6430c8e-1b5e-40b5-8d6f-e2347d52822a">
+<img width="250" alt="Снимок экрана 2023-08-03 в 16 30 42" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/f6430c8e-1b5e-40b5-8d6f-e2347d52822a">
 
 
 
-<img width="300" alt="Снимок экрана 2023-08-03 в 16 30 13" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/88ccfa37-9822-4c07-85e6-8dc3825cf5c4">
+<img width="250" alt="Снимок экрана 2023-08-03 в 16 30 13" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/88ccfa37-9822-4c07-85e6-8dc3825cf5c4">
 
 
 
-<img width="300" alt="Снимок экрана 2023-08-03 в 16 20 51" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/871e2084-22f3-446e-bff5-0f47bd066bf9">
+<img width="250" alt="Снимок экрана 2023-08-03 в 16 20 51" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/871e2084-22f3-446e-bff5-0f47bd066bf9">
 
-<img width="738" alt="Снимок экрана 2023-08-03 в 16 21 28" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/f7c438f4-3dfc-4c6f-894c-e23ec61afbc4">
+<img width="600" alt="Снимок экрана 2023-08-03 в 16 21 28" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/f7c438f4-3dfc-4c6f-894c-e23ec61afbc4">
 
-<img width="704" alt="Снимок экрана 2023-08-03 в 16 21 51" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/28184344-4c26-413c-9852-3579f2e87c6c">
+<img width="600" alt="Снимок экрана 2023-08-03 в 16 21 51" src="https://github.com/IgorJu/firebase_Tasklist/assets/127942402/28184344-4c26-413c-9852-3579f2e87c6c">
 
